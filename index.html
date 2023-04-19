@@ -9,36 +9,35 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
+
+
 <body>
 
+  <h1>My Todo List</h1>
+  <form>
+    <label>
+      Task Name:
+      <input id="task-input" type="text" placeholder="Do assignment">
+    </label>
+    <button type="button" id="add-task">
+      Add Task
+    </button>
+  </form>
+  <ul id="todo-list">
+  </ul>
 
-  <body>
+
   
-    <h1>My Todo List</h1>
-    <form>
+  <script type="text/template" id="list-item-template">
+    <li class="task">
       <label>
-        Task Name:
-        <input id="task-input" type="text" placeholder="Do assignment">
+        <input class="checkbox" type="checkbox">
+      
       </label>
-      <button type="button" id="add-task">
-        Add Task
-      </button>
-    </form>
-    <ul id="todo-list">
-    </ul>
-  
-  
-    
-    <script type="text/template" id="list-item-template">
-      <li class="task">
-        <label>
-          <input class="checkbox" type="checkbox">
-        
-        </label>
-      </li>
-    </script>
-  
-    <script src="js/script.js"></script>
-  </body>
-  
-  </html>
+    </li>
+  </script>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
