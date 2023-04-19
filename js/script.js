@@ -8,6 +8,10 @@ var showActiveButton = document.getElementById("show-active")
 var showAllButton = document.getElementById("show-all") 
 var showCompletedButton = document.getElementById("completed") 
 
+function saveTasks(name, isCompleted){
+    localStorage.setItem(name, isCompleted);
+    
+}
 
 function onAddTaskClicked(event) {
     let taskName = newTaskInput.value;
