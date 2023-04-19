@@ -20,20 +20,6 @@ function onAddTaskClicked(event) {
 
 }
 
-function onTodolistClicked(event) {
-    let targetElement = event.target;
-
-    while (!targetElement.classList.contains("task")) {
-        targetElement = targetElement.parentElement;
-    }
-    let checkbox = targetElement.querySelector(".checkbox");
-    if (checkbox.checked) {
-        targetElement.classList.add("completed");
-    } else {
-        targetElement.classList.remove("completed");
-    }
-}
-
 function showActiveTasks() {
     var tasks = document.getElementsByClassName('task')
     for (let i = 0; < tasks.length; i++){
@@ -66,6 +52,20 @@ function showCompleted() {
         }
     }
 
+}
+
+function onTodolistClicked(event) {
+    let targetElement = event.target;
+
+    while (!targetElement.classList.contains("task")) {
+        targetElement = targetElement.parentElement;
+    }
+    let checkbox = targetElement.querySelector(".checkbox");
+    if (checkbox.checked) {
+        targetElement.classList.add("completed");
+    } else {
+        targetElement.classList.remove("completed");
+    }
 }
 
 /* Step 3 make the event trigger our functions
