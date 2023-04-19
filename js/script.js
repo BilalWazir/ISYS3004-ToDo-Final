@@ -34,7 +34,15 @@ function onTodolistClicked(event) {
 
 function showActiveTasks() {
     var tasks = document.getElementsByClassName('task')
-    console.log(tasks);
+    for (let i = 0; < tasks.length; i++) {
+        if (tasks[i].classList.contains("completed")){
+            var element = tasks[i]
+            element.style.display = "none"; 
+        } else {
+            tasks[i].style.display = "block";
+        }
+    }
+
 }
 
 /* Step 3 make the event trigger our functions
