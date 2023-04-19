@@ -105,4 +105,4 @@ showCompletedButton.addEventListener('click', showCompleted;
 
 
 
-renderTasks()
+renderTasks();
