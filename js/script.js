@@ -4,6 +4,9 @@ let todoListContainer = document.getElementById("todo-list");
 let templateElement = document.getElementById("list-item-template");
 let template = templateElement.innerHTML;
 
+var showActiveButton = document.getElementById("show-active") 
+
+
 function onAddTaskClicked(event) {
     let taskName = newTaskInput.value;
     /* Now clear the text box */
@@ -27,6 +30,11 @@ function onTodolistClicked(event) {
     } else {
         targetElement.classList.remove("completed");
     }
+}
+
+function showActiveTasks() {
+    var tasks = document.getElementsByClassName('task')
+    console.log(tasks);
 }
 
 /* Step 3 make the event trigger our functions
