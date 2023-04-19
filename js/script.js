@@ -10,8 +10,10 @@ var showCompletedButton = document.getElementById("completed")
 
 function saveTasks(name, isCompleted){
     localStorage.setItem(name, isCompleted);
-    
+
 }
+
+
 
 function onAddTaskClicked(event) {
     let taskName = newTaskInput.value;
@@ -21,6 +23,8 @@ function onAddTaskClicked(event) {
     let taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
 
     todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
+
+    saveTasks(taskName, false)
 
 }
 
@@ -70,7 +74,25 @@ function onTodolistClicked(event) {
     } else {
         targetElement.classList.remove("completed");
     }
+
+    var taskNameElement = targetElement.querySelector(".task-name")
+    var taskName = taskNameElement.innerText;
+
+    saveTasks(taskName, checkbox.checked)
 }
+
+function renderTasks(){
+    for (i=0; i< localStorage.length; i++){
+        var taskName = localStorage.key(i)
+        var isCompleted = localStorage.getItem(taskName) == "true";
+        var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
+        if (!isCompleted){
+            todoListContainer.insertAdjacentHTML('afterbegin', taskHTML);
+        }
+    }
+}
+
+
 
 /* Step 3 make the event trigger our functions
 -----------------------------------------------*/ 
@@ -79,3 +101,8 @@ todoListContainer.addEventListener('click', onTodolistClicked);
 showActiveButton.addEventListener('click', showActiveTasks);
 showAllButton.addEventListener('click', showAllTasks);
 showCompletedButton.addEventListener('click', showCompleted;
+
+
+
+
+renderTasks()
