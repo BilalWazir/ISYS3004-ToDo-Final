@@ -9,7 +9,7 @@ var showAllButton = document.getElementById("show-all")
 var showCompletedButton = document.getElementById("completed") 
 
 function saveTasks(name, isCompleted){
-    localStorage.setItem(name, isCompleted);
+    localStorage.setItem(name, JSON.stringify isCompleted);
 
 }
 
@@ -81,16 +81,23 @@ function onTodolistClicked(event) {
     saveTasks(taskName, checkbox.checked)
 }
 
-function renderTasks(){
-    for (i=0; i< localStorage.length; i++){
-        var taskName = localStorage.key(i)
-        var isCompleted = localStorage.getItem(taskName) == "true";
-        var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
-        if (!isCompleted){
-            todoListContainer.insertAdjacentHTML('afterbegin', taskHTML);
-        }
+function renderTasks() {
+    for (i = 0; i < localStorage.length; i++) {
+      var taskName = localStorage.key(i);
+      var isCompleted = JSON.parse(localStorage.getItem(taskName));
+      var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
+      if (!isCompleted) {
+        todoListContainer.insertAdjacentHTML("afterbegin", taskHTML);
+      } else {
+        todoListContainer.insertAdjacentHTML("beforeend", taskHTML);
+        var taskElement = todoListContainer.querySelector(".task:last-child");
+        var checkbox = taskElement.querySelector(".checkbox");
+        checkbox.checked = true;
+        taskElement.classList.add("completed");
+      }
     }
-}
+  }
+  
 
 
 
