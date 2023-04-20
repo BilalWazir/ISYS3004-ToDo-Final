@@ -47,7 +47,7 @@ function showAllTasks() {
     var tasks = document.getElementsByClassName('task')
     for (let i = 0; i < tasks.length; i++) {
 
-        if (tasks[i].style.display = "block";
+        if (tasks[i].style.display = "block");
     }
 
 }
@@ -85,16 +85,22 @@ function onTodolistClicked(event) {
     saveTasks(taskName, checkbox.checked)
 }
 
-function renderTasks(){
-    for (i=0; i< localStorage.length; i++){
-        var taskName = localStorage.key(i)
+function renderTasks() {
+    for (i = 0; i < localStorage.length; i++) {
+        var taskName = localStorage.key(i);
         var isCompleted = localStorage.getItem(taskName) == "true";
         var taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
-        if (!isCompleted){
-            todoListContainer.insertAdjacentHTML('afterbegin', taskHTML);
+
+        todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
+        var latestTask = todoListContainer.lastElementChild;
+
+        if (isCompleted) {
+            latestTask.classList.add("completed");
+            latestTask.querySelector(".checkbox").checked = true;
         }
     }
 }
+
 
 
 
